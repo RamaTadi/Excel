@@ -1,0 +1,22 @@
+Net Sales =SUM(fact_sales_monthly[net_sales_amount])
+
+Net Sales 2019 =CALCULATE([Net Sales],dim_date[FY] = "2019")
+
+Net Sales 2020 =CALCULATE([Net Sales],dim_date[FY] = "2020")
+
+Net Sales 2021 =CALCULATE([Net Sales],dim_date[FY] = "2021")
+
+21 vs 20 =DIVIDE([Net Sales  2021],[Net Sales 2020],0)
+
+target21 =SUM(ns_targets_2021[ns_target])
+
+2021 - Target =[Net Sales  2021] - [target21]
+
+2021 - Target % =DIVIDE([2021 - Target], [Net Sales  2021],0)
+
+COGS =SUM(fact_sales_monthly[total_cogs])
+
+Gross Margin =[Net Sales] - [COGS]
+
+GM % =DIVIDE([Gross Margin], [Net Sales],0)
+
